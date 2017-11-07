@@ -3,6 +3,9 @@
 navigator.geolocation.getCurrentPosition(function (position){
 	var Longitude = position.coords.longitude;
 	var Latitude = position.coords.latitude;
+	
+	// ajax GET request to get weather information
+
 	$.ajax({
 
 		url : 'https://fcc-weather-api.glitch.me/api/current?lon='+Longitude+'&lat='+Latitude,
@@ -11,7 +14,7 @@ navigator.geolocation.getCurrentPosition(function (position){
 		success : function(data) {
 
 
-			updateData(data);
+			updateUI(data);
 		},
 		error : function()
 		{
@@ -23,9 +26,9 @@ navigator.geolocation.getCurrentPosition(function (position){
 		complete: function () { $('.imgSpinner').hide(); }
 	});
 
-
-	function updateData(data){
-		console.log(data);
+    // Add data to html page
+	function updateUI(data){
+		
 		var city=data.name ;
 		var state=data.sys.country;
 		var temp=data.main.temp ;
@@ -40,40 +43,46 @@ navigator.geolocation.getCurrentPosition(function (position){
 
 		switch (weather) {
 			case "scattered clouds":
-			$('.weatherBox').append('<img src="images/scatteredClouds.gif">').css("text-align","center");
-			break;
+			
+				$(".weatherIcon").attr("src","images/scatteredClouds.gif");
+				break;
 			case "sunny":
-			$('.weatherBox').append('<img src="images/sunny.gif">').css("text-align","center");
-			break;
+				
+				$(".weatherIcon").attr("src","images/sunny.gif");
+				break;
 			case "thunderstorm":
-			$('.weatherBox').append('<img src="images/thunderstorm.gif">').css("text-align","center");
-			break;
+			
+				$(".weatherIcon").attr("src","images/thunderstorm.gif");
+				break;
 			case "rainy":
-			$('.weatherBox').append('<img src="images/raining.gif">').css("text-align","center");
-			break;
+				
+				$(".weatherIcon").attr("src","images/raining.gif");
+				break;
 			case "fews clouds":
-			$('.weatherBox').append('<img src="images/cloudy.gif">').css("text-align","center");
+				
+				$(".weatherIcon").attr("src","images/cloudy.gif");
 			break;
 			case "light rain":
-			$('.weatherBox').append('<img src="images/lightRain.gif">').css("text-align","center");
-			break;
+			
+				$(".weatherIcon").attr("src","images/lightRain.gif");
+				break;
 
 			
 		}
 
-
+        // Change unity of temperature (°F,°C)
 		$('.temp').on('click', function(){
 
 			if ($(this).hasClass('celcius')) {
 				$('.temp')
-					.removeClass('celcius')
-					.addClass('fahrenheit')
-					.text(setCelcius());
+				.removeClass('celcius')
+				.addClass('fahrenheit')
+				.text(setCelcius());
 			} else {
 				$('.temp')
-					.removeClass('fahrenheit')
-					.addClass('celcius')
-					.text(setFahrenheit());
+				.removeClass('fahrenheit')
+				.addClass('celcius')
+				.text(setFahrenheit());
 			}
 
 			// $('.temp').text(setCelcius());
