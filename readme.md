@@ -15,7 +15,7 @@ The following screenshot shows my App:
 <p align="center">
 	<img src="images/weatherAppIMg.png">
 </p>
-To give you more of an idea, have a look at the demo <a href="https://devkah.github.io/localWeather-project/">here</a>.
+To give you more of an idea, have a look at the demo <a href="https://devkah.github.io/localWeather-project/" target="_blank">here</a>.
 
 ## What I have learned
 
