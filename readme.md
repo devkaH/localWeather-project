@@ -15,7 +15,8 @@ The following screenshot shows my App:
 <p align="center">
 	<img src="images/weatherAppIMg.png">
 </p>
-This an example project's code 
+To give you more of an idea, have a look at the demo <a href="">here</a>.
+
 ## What I have learned
 
 * Use the endpoint: https://fcc-weather-api.glitch.me/ to get the weather at a location.
